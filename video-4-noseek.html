@@ -1,0 +1,28 @@
+<!-- シークバー非表示 -->
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>シークバー非表示</title>
+  <link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet" />
+  <script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
+  <style>
+    .vjs-progress-control.vjs-control{
+      visibility: hidden !important;
+    }
+    .video-js .vjs-time-control {
+      display: block;
+    }
+    .video-js .vjs-remaining-time {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <video-js id="video1" data-setup='{"width":"600px;"}' controls>
+    <source src="ship-in-fog.mp4">
+  </video-js>
+</body>
+
+</html>

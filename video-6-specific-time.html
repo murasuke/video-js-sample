@@ -1,0 +1,30 @@
+<!-- 指定秒数から再生、シーク、停止不可 -->
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>指定秒数から再生、シーク、停止不可</title>
+  <link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet" />
+  <script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
+  <style>
+    .vjs-progress-control.vjs-control{
+        visibility: hidden !important;
+    }
+    .vjs-play-control.vjs-control{
+        display: none !important;
+    }
+    </style>
+</head>
+<body>
+  <video-js id="video1" data-setup='{"width":"600px;"}' controls>
+  </video-js>
+  <script>
+    // 動画を現在の「秒」から再生(20秒であれば、20秒から再生開始)
+    const myPlayer = videojs('video1');
+    myPlayer.src('fireworks.mp4');
+    myPlayer.currentTime((new Date()).getSeconds());
+    myPlayer.play();
+  </script>
+</body>
+</html>

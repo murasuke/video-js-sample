@@ -1,0 +1,37 @@
+<!-- 再生開始終了時イベント -->
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>再生開始終了時イベント</title>
+  <link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet" />
+  <script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
+</head>
+
+<body>
+  <video-js id="video1" data-setup='{"width":"600px;"}' controls>
+    <source src="ship-in-fog.mp4">
+  </video-js>
+  <script>
+    let timer = 0;
+    const myPlayer = videojs('video1');
+    //再生開始時のアクション
+    myPlayer.on('play', function () {
+        console.log('再生開始');
+        timer = setInterval(
+          () => {console.log(`残り:${Math.round(myPlayer.remainingTime())}s`)}, 1000);
+    });
+    //再生終了時のアクション
+    myPlayer.on('pause', function () {
+      console.log('一時停止');
+      if (timer) {clearInterval(timer);}
+    });
+    //再生終了時のアクション
+    myPlayer.on('ended', function () {
+        console.log('再生終了');
+        if (timer) {clearInterval(timer);}
+    });
+  </script>
+</body>
+</html>

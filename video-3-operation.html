@@ -1,0 +1,42 @@
+<!-- jsで再生停止 -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>jsで再生停止</title>
+  <link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet" />
+  <script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
+</head>
+<body>
+  <video-js id="video1" data-setup='{"width":"600px;"}' controls>
+    <source src="ship-in-fog.mp4">
+  </video-js>
+  <div>
+    <button id="vplay">再生</button>
+    <button id="vpause">一時停止</button>
+    <fieldset>
+      <legend>動画:</legend>
+      <div>
+        <input type="radio" id="ship" name="video" value="ship" checked />
+        <label for="ship">船</label>
+      </div>
+      <div>
+        <input type="radio" id="fireworks" name="video" value="fireworks" />
+        <label for="fireworks">花火</label>
+      </div>
+    </fieldset>
+  </div>
+  <script>
+    const myPlayer = videojs('video1');
+    document.querySelector("#vplay").addEventListener('click', () => {
+      if (document.querySelector('#ship').checked) {
+        myPlayer.src({src:'ship-in-fog.mp4'});
+      } else {
+        myPlayer.src({src:'fireworks.mp4'});
+      }
+      myPlayer.play();
+    });
+    document.querySelector("#vpause").addEventListener('click', () => myPlayer.pause());
+  </script>
+</body>
+</html>
